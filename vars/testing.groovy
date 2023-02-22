@@ -14,7 +14,7 @@ def call(String channel = 'aws-chat-testing', String token, String pass = "succe
       
   attachments: [
       [
-        color: ${color},
+        color: "${color}",
       pretext: 'Notification From Jenkins',
       title: 'Updates',
       text: "Build Started\n${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n ",
