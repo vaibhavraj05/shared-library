@@ -11,19 +11,19 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
 
   sh '''
             set +x;
-            curl -X POST -H 'Content-type: application/json' --data \"{
+            curl -X POST -H 'Content-type: application/json' --data '{
               "username": "vaibhavraj",
               "attachments": [
                 {
                   "pretext": "Notification From Jenkins",
                   "title": Updates,
                   "title_link": "https://jenkins.gkmit.co/view/accel/job/accel-staging/",
-                  "text": "${status}\n${BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n Commit URL (<${url}|Open>)",
+                  \"text\": \"${status}\n${BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n Commit URL (<${url}|Open>)\",
                   "footer": "testing",
                   "footer_icon": "https://media.licdn.com/dms/image/C560BAQGIOZDvliUyqA/company-logo_200_200/0/1637701111354?e=1684972800&v=beta&t=o4C4cxZu226JNl4Td4GPqOct6jbqi_GUnIuC0SlSEgc",
                   "color": "#006400"
                 }
               ]
-            }\" "${webhook}"
+            }' "${webhook}"
           '''
 }
