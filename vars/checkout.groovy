@@ -3,6 +3,7 @@
 def call(String gitUrl, String branch = 'staging', String token = '') {
   echo "Hello Wrolds"
   echo "${token}"
+  node{
   checkout([
             $class: 'GitSCM', 
             branches: [[name: "*/${branch}"]], 
@@ -15,6 +16,7 @@ def call(String gitUrl, String branch = 'staging', String token = '') {
                 ]]
                 ]
           )
+  }
     
    def gitBaseUrl = sh(returnStdout: true, script: 'git config --get remote.origin.url | sed "s/.git$/""/"').trim()  //Grep the git url
    def gitCommitLink = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:"%H"').trim()                // Grep the recent commit
