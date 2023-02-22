@@ -14,18 +14,11 @@
 //             credentialsId: "${token}", 
 
 
-def call(String gitUrl, String branch = 'master', String credentialsId = '') {
+def call(Map stageParams) {
+
     checkout([
         $class: 'GitSCM',
-        userRemoteConfigs: [[
-            url: gitUrl,
-            credentialsId: credentialsId
-        ]],
-        branches: [[name: "refs/heads/${branch}"]],
-        extensions: [
-            [$class: 'CleanBeforeCheckout'],
-            [$class: 'CheckoutOption', timeout: 30],
-            [$class: 'CloneOption', depth: 1]
-        ]
+        branches: [[name:  stageParams.branch ]],
+        userRemoteConfigs: [[ url: stageParams.url ]]
     ])
-}
+  }
