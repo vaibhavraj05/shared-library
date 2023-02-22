@@ -25,6 +25,7 @@ def call(String webhook, String pass = "success") {
   }
   """
   echo "$objects"
+  echo ${webhook}
 
   sh "set +x;curl -X POST -H 'Content-type: application/json' --data ${objects} ${webhook}"
 }
