@@ -2,7 +2,6 @@
 
 def call(String gitUrl, String branch = 'staging') {
   echo "Hello Wrolds"
-  echo "${token}"
   
   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], userRemoteConfigs: [[url: "${gitUrl}"]]])
     
