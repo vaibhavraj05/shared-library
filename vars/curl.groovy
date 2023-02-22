@@ -19,7 +19,7 @@ def call(String webhook, String pass = "success") {
                   "text": "${status}\n${BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n Commit URL (<${url}|Open>)",
                   "footer": "testing",
                   "footer_icon": "https://media.licdn.com/dms/image/C560BAQGIOZDvliUyqA/company-logo_200_200/0/1637701111354?e=1684972800&v=beta&t=o4C4cxZu226JNl4Td4GPqOct6jbqi_GUnIuC0SlSEgc",
-                  "color": "#006400"
+                  "color": "${color}"
                 }
               ]
   }' ${webhook}
