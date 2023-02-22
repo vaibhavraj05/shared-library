@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 def call(String gitUrl, String branch = 'Staging', String token = '') {
+  echo "Hello Wrolds"
   checkout([
             $class: 'GitSCM', 
             branches: [[name: "*/${branch}"]], 
