@@ -8,6 +8,7 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
     status = "Build Successful"
   }
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
+  def url = "https://google.com"
   def objects = """
      "username": "vaibhavraj",
       "attachments":[
