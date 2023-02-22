@@ -9,7 +9,7 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
   }
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
   def url = "https://google.com"
-  def objects = """
+  def objects = """{
      "username": "vaibhavraj",
       "attachments":[
                 {
@@ -22,7 +22,7 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
                   "color": "#006400"
                 }
               ]
-  
+  }
   """
   echo "$objects"
 
