@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String webhook, String pass = "success") {
+def call(String channel = 'aws-chat-testing', String webhook, String pass = "success") {
   def color= '#FF0000'
   def status = "Build Failed"
   if(pass == 'success'){
@@ -11,7 +11,7 @@ def call(String webhook, String pass = "success") {
 
   sh '''
             set +x;
-            curl -X POST -H 'Content-type: application/json' --data '{
+            curl -X POST -H 'Content-type: application/json' --data \"{
               "username": "vaibhavraj",
               "attachments": [
                 {
@@ -24,6 +24,6 @@ def call(String webhook, String pass = "success") {
                   "color": "#006400"
                 }
               ]
-            }' "${webhook}"
+            }\" "${webhook}"
           '''
 }
