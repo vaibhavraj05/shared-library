@@ -9,7 +9,8 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
   }
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
   def objects = '''
-            [
+     "username": "vaibhavraj",
+      "attachments":[
                 {
                   "pretext": "Notification From Jenkins",
                   "title": Updates,
@@ -25,9 +26,6 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
 
   sh '''
             set +x;
-            curl -X POST -H 'Content-type: application/json' --data '{
-              "username": "vaibhavraj",
-              "attachments": \"${objects}\"
-            }' \"${webhook}\"
+            curl -X POST -H 'Content-type: application/json' --data "${objects}" "${webhook}"
           '''
 }
