@@ -3,11 +3,11 @@
 def call(String channel = 'aws-chat-testing', String token, String pass = "success") {
   
   if(pass == 'success'){
-    def color: '#00FF00'
+    def color= '#00FF00'
     def status = "Build Successful"
   }
   else{
-    def color: '#FF0000'
+    def color= '#FF0000'
     def status = "Build Failed"
   }
 
