@@ -9,7 +9,7 @@ def call(String webhook, String pass = "success") {
   }
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
   def url = "https://google.com"
-  def objects = """{
+  def objects = """'{
      "username": "vaibhavraj",
       "attachments":[
                 {
@@ -22,7 +22,7 @@ def call(String webhook, String pass = "success") {
                   "color": "#006400"
                 }
               ]
-  }
+  }'
   """
   echo "$objects"
   echo "${webhook}"
