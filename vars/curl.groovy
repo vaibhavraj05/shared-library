@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String channel = 'aws-chat-testing', String webhook, String pass = "success") {
+def call(String webhook, String pass = "success") {
   def color= '#FF0000'
   def status = "Build Failed"
   if(pass == 'success'){
