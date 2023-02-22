@@ -23,9 +23,10 @@ def call(String channel = 'aws-chat-testing', String webhook, String pass = "suc
               ]
   
   '''
+  echo "$objects"
 
   sh '''
             set +x;
-            curl -X POST -H 'Content-type: application/json' --data "${objects}" "${webhook}"
+            curl -X POST -H 'Content-type: application/json' --data "Hello Wrold" "${webhook}"
           '''
 }
