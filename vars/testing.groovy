@@ -1,14 +1,11 @@
 #!/usr/bin/env groovy
 
 def call(String channel = 'aws-chat-testing', String token, String pass = "success") {
-  
+  def color= '#FF0000'
+   def status = "Build Failed"
   if(pass == 'success'){
-    def color= '#00FF00'
-    def status = "Build Successful"
-  }
-  else{
-    def color= '#FF0000'
-    def status = "Build Failed"
+    color= '#00FF00'
+    status = "Build Successful"
   }
 
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
