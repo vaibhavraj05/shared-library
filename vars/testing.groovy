@@ -1,9 +1,9 @@
 def call(String channel = 'aws-chat-testing', String token, String pass = "success") {
-  def color= '#FF0000'
-  def status = "Build Failed"
-  if(pass == 'success'){
-    color= '#00FF00'
-    status = "Build Successful"
+  def color= '#00FF00'
+  def status = "Build Successfully"
+  if(pass ==! 'success'){
+    color= '#FF0000'
+    status = "Build Failed"
   }
 
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
