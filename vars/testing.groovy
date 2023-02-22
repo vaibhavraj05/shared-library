@@ -12,7 +12,7 @@ def call(String channel = 'aws-chat-testing', String token,String pass = "succes
   attachments: [
       [
       color: "${color}",
-      pretext: "Notification From "${pretext}",
+      pretext: "Notification From ${pretext}",
       title: 'Updates',
         text: "${status}\n${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n Commit URL (<${env.url}|Open>)\n Commit Details ->\n ${env.commit_details}",
         footer: "${footer}",
