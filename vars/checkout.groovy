@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String gitUrl, String branch = 'Staging', String token = '') {
+def call(String gitUrl, String branch = 'staging', String token = '') {
   echo "Hello Wrolds"
   echo "${token}"
   checkout([
