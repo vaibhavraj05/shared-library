@@ -14,7 +14,7 @@ def call(String webhook, String pass = "success") {
       "attachments":[
                 {
                   "pretext": "Notification From Jenkins",
-                  "title": Updates,
+                  "title": "Updates",
                   "title_link": "https://jenkins.gkmit.co/view/accel/job/accel-staging/",
                   "text": "${status}\n${BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n Commit URL (<${url}|Open>)",
                   "footer": "testing",
