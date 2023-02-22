@@ -29,3 +29,4 @@ def call(String repoUrl, String branch = 'master', String credentialId = '') {
     ]
 
     checkout(scmVars)
+}
