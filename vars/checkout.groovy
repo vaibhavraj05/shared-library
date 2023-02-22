@@ -14,19 +14,18 @@
 //             credentialsId: "${token}", 
 
 
-def call(String repoUrl, String branch = 'master', String credentialId = '') {
-    def scmVars = [
+def call(String gitUrl, String branch = 'master', String credentialsId = '') {
+    checkout([
         $class: 'GitSCM',
         userRemoteConfigs: [[
-            credentialsId: credentialId,
-            url: repoUrl
+            url: gitUrl,
+            credentialsId: credentialsId
         ]],
-        branches: [[name: "*/${branch}"]],
+        branches: [[name: "refs/heads/${branch}"]],
         extensions: [
-            [$class: 'CleanCheckout'],
-            [$class: 'CloneOption', noTags: true, shallow: true, depth: 1]
+            [$class: 'CleanBeforeCheckout'],
+            [$class: 'CheckoutOption', timeout: 30],
+            [$class: 'CloneOption', depth: 1]
         ]
-    ]
-
-    checkout(scmVars)
+    ])
 }
