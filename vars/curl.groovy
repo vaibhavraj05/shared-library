@@ -22,8 +22,8 @@ def call(String webhook, String pass = "success") {
                   "color": "#006400"
                 }
               ]
-  }' ${webhook}
+  }'
   """
   echo "${objects}"
-  sh "curl -X POST -H 'Content-type: application/json' --data ${objects} "
+  sh "curl -X POST -H 'Content-type: application/json' --data ${objects} ${webhook}"
 }
