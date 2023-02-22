@@ -3,8 +3,7 @@
 def call(String gitUrl, String branch = 'staging', String token = '') {
   echo "Hello Wrolds"
   echo "${token}"
-  def scm = """
-    [
+  def scm = [
             $class: 'GitSCM', 
             branches: [[name: "*/${branch}"]], 
             doGenerateSubmoduleConfigurations: false, 
@@ -14,8 +13,7 @@ def call(String gitUrl, String branch = 'staging', String token = '') {
               credentialsId: "${token}", 
               url: "${gitUrl}"
                 ]]
-                ]
-  """
+  ]
   echo "$scm"
   checkout("${scm}")
     
