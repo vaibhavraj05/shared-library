@@ -1,8 +1,6 @@
-#!/usr/bin/env groovy
-
 def call(String channel = 'aws-chat-testing', String token, String pass = "success") {
   def color= '#FF0000'
-   def status = "Build Failed"
+  def status = "Build Failed"
   if(pass == 'success'){
     color= '#00FF00'
     status = "Build Successful"
