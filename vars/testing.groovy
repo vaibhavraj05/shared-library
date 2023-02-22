@@ -1,6 +1,11 @@
 def call(String channel = 'aws-chat-testing', String token,String pass = "success", String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing") {
   def color= '#00FF00'
   def status = "Build Successfully"
+  def gitBaseUrl = sh(returnStdout: true, script: 'git config --get remote.origin.url | sed "s/.git$/""/"').trim()  //Grep the git url
+  def gitCommitLink = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:"%H"').trim()                // Grep the recent commit
+  env.url= "${gitBaseUrl}/commit/${gitCommitLink}"                                                                 // Mergning bot the details
+  env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
+  env.commit_details = sh (returnStdout: true, script: '''set +e && git log --format="short" -1 | tail -n +2 ''')       
   if(pass != 'success'){
     color= '#FF0000'
     status = "Build Failed"
