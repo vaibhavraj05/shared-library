@@ -2,6 +2,7 @@
 
 def call(String gitUrl, String branch = 'Staging', String token = '') {
   echo "Hello Wrolds"
+  echo "${token}"
   checkout([
             $class: 'GitSCM', 
             branches: [[name: "*/${branch}"]], 
@@ -13,7 +14,8 @@ def call(String gitUrl, String branch = 'Staging', String token = '') {
               url: "${gitUrl}"
                 ]]
                 ]
-            )
+          )
+    
    def gitBaseUrl = sh(returnStdout: true, script: 'git config --get remote.origin.url | sed "s/.git$/""/"').trim()  //Grep the git url
    def gitCommitLink = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:"%H"').trim()                // Grep the recent commit
    env.url= "${gitBaseUrl}/commit/${gitCommitLink}"                                                                 // Mergning bot the details
