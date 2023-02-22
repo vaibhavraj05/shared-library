@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String name = 'human') {
+def call(String channel = 'aws-chat-testing', String token) {
       slackSend (
       attachments: [
           [
@@ -12,8 +12,8 @@ def call(String name = 'human') {
               footer_icon: 'https://jenkins.io/images/logos/jenkins/256.png'
           ]
         ],
-        channel: 'aws-chat-testing',
+        channel: "${channel}",
         teamDomain:'testing',
-        tokenCredentialId: 'slack-bot-99',
+        tokenCredentialId: "${token}",
       )
 }
