@@ -3,10 +3,12 @@
 def call(String channel = 'aws-chat-testing', String token, String pass = "success") {
   
   if(pass == 'success'){
-    color: '#00FF00'
+    def color: '#00FF00'
+    def status = "Build Successful"
   }
   else{
-    color: '#FF0000'
+    def color: '#FF0000'
+    def status = "Build Failed"
   }
 
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}" //Fetching the build trigger
@@ -14,10 +16,10 @@ def call(String channel = 'aws-chat-testing', String token, String pass = "succe
       
   attachments: [
       [
-        color: "${color}",
+      color: color,
       pretext: 'Notification From Jenkins',
       title: 'Updates',
-      text: "Build Started\n${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n ",
+      text: "${status}\n${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \n ",
       footer: 'Jenkins',
       footer_icon: 'https://jenkins.io/images/logos/jenkins/256.png'
       ]
