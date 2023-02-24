@@ -5,6 +5,7 @@ def call(String channel = 'aws-chat-testing', String token,String pass = "succes
     color= '#FF0000'
     status = "Build Failed"
   }
+  echo "${message}"
 
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription}}" //Fetching the build trigger
   slackSend (
