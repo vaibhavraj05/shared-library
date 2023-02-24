@@ -5,8 +5,8 @@ def call(Map config){
     def secretToken = config.secretToken ?:error("No token Provided")
     def varName = config.varName ?: "setup"
     def awsProfile = config.awsProfile ?: error("No prfile provided")
-    def awsRegion = congif.awsRegion ?: error("No region provided")
-    def workDir = congif.workDir ?: error("No working Directory provided")
+    def awsRegion = config.awsRegion ?: error("No region provided")
+    def workDir = config.workDir ?: error("No working Directory provided")
     def dockerImage = config.dockerImage ?: "msshahanshah/tools:terrform02"
     def imgTag = config.imgTag ?: "${env.BUILD_ID}"
 
