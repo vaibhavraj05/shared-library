@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
 def call(Map config){
-  def secretToken = secret.secretToken ?:error("No token Provided")
-  def secretRegion = secret.secretRegion ?: error("No region provided")
-  def secretName = secret.secretName ?: error("No secret name provided")
+  def secretToken = config.secretToken ?:error("No token Provided")
+  def secretRegion = config.secretRegion ?: error("No region provided")
+  def secretName = config.secretName ?: error("No secret name provided")
   withCredentials([string(credentialsId: secretToken, variable: 'accel')]) {
     sh"""
                 /bin/bash -c "export $accel && aws secretsmanager get-secret-value --region ${secretRegion} --secret-id ${secretName} > data"
