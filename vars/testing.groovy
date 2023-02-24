@@ -6,6 +6,7 @@ def call(Map config) {
   def slackToken = config.slackToken ?: error('No token provided')
   def message = config.message ?: ''
   def pass = config.pass ?: 'S'
+  def title = config.title ?: 'Updates'
   def footer = config.footer ?: 'Jenkins'
   def pretext = config.pretext ?: 'Jenkins'
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png'
