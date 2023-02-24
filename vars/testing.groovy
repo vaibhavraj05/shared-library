@@ -1,4 +1,4 @@
-def call(map config) {
+def call(Map config) {
   
   def channel = config.channel ?: 'aws-chat-testing'
   def token = config.token ?: error('No token provided')
