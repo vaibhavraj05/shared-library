@@ -4,13 +4,14 @@ def call(Map config) {
   
   def channel = config.channel ?: error('No channel provided')
   def slackToken = config.slackToken ?: error('No token provided')
+  def teamDomain = config.teamDomain ?: error("No teamDomain provided")
   def message = config.message ?: ''
   def pass = config.pass ?: 'S'
   def title = config.title ?: 'Updates'
   def footer = config.footer ?: 'Jenkins'
   def pretext = config.pretext ?: 'Jenkins'
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png'
-  def teamDomain = config.teamDomain ?: 'testing'
+
   
 //   String channel, String token, String message, String pass = "success", String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing"
   def color= '#00FF00'
