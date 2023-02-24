@@ -1,7 +1,7 @@
 def call(Map config) {
   
   def channel = config.channel ?: error('No channel provided')
-  def slackToken = config.token ?: error('No token provided')
+  def slackToken = config.slackToken ?: error('No token provided')
   def message = config.message ?: ''
   def pass = config.pass ?: 'S'
   def footer = config.footer ?: 'Jenkins'
