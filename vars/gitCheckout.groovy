@@ -1,7 +1,13 @@
 #!/usr/bin/env groovy
 
-def call(String gitUrl, String branch = 'staging', String token = " ") {
-   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], userRemoteConfigs: [[url: "${gitUrl}", credentialsId: "${token}"]]])
+def call(Map config) {
+   def gitUrl = config.gitUrl ?: error("No url passed")
+   def branch = config.branch ?: "staging"
+   def gitToken = config.token ?: error("No token passed")
+   
+   
+   
+   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], userRemoteConfigs: [[url: "${gitUrl}", credentialsId: "${gitToken}"]]])
    def gitBaseUrl = sh(returnStdout: true, script: 'git config --get remote.origin.url | sed "s/.git$/""/"').trim()  //Grep the git url
    def gitCommitLink = sh(returnStdout: true, script: 'git log -n 1 --pretty=format:"%H"').trim()                // Grep the recent commit
    def commitUrl= "${gitBaseUrl}/commit/${gitCommitLink}"                                                                 // Mergning bot the details
