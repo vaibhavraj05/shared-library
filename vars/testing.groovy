@@ -1,4 +1,4 @@
-def call(String channel = 'aws-chat-testing', String token,String pass = "success", String = message,String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing") {
+def call(String channel = 'aws-chat-testing', String token,String pass = "success", String message,String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing") {
   def color= '#00FF00'
   def status = "Build Successfully"
   if(pass != 'success'){
