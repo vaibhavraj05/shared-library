@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def call(Map config) {
   
   def channel = config.channel ?: error('No channel provided')
