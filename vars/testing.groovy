@@ -9,7 +9,7 @@ def call(map config) {
   def footer_icon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png'
   def teamDomain = config.teamDomain ?: 'testing'
   
-  String channel, String token, String message, String pass = "success", String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing"
+//   String channel, String token, String message, String pass = "success", String footer = 'Jenkins', String pretext = "Jenkins" , String footer_icon = 'https://jenkins.io/images/logos/jenkins/256.png', String teamDomain = "testing"
   def color= '#00FF00'
   def status = "Build Successfully"
   if(pass != 'success'){
