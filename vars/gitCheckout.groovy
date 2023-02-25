@@ -3,7 +3,7 @@
 def call(Map config) {
    def gitUrl = config.gitUrl ?: error("No url passed")
    def branch = config.branch ?: "staging"
-   def gitToken = config.gitToken ?: error("No token passed")
+   def gitToken = config.gitToken ?: ""
    
    
    
