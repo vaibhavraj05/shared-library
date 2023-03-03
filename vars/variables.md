@@ -3,44 +3,46 @@
 def config = [ <br>
 // Slack send share library <br>
     // Mandatory <br>
-    channel: 'aws-chat-testing', <br>
-    slackToken: "slack-bot-99",            <br>
-    teamDomain: 'testing',        // Enter your workspace name <br>
+&nbsp;&nbsp;&nbsp;&nbsp; channel: '', <br>
+&nbsp;&nbsp;&nbsp;&nbsp; slackToken: '',            <br>
+&nbsp;&nbsp;&nbsp;&nbsp; teamDomain: '', // Enter your workspace name <br>
                      <br>
 // Slack with weebhooks <br>
-    webhook : "webhook-url", <br>
+&nbsp;&nbsp;&nbsp;&nbsp; webhook : '', <br>
  <br>
     // Optional   [Common for both slack_token slack_curl] <br>
-    message: null, <br>
-    pass: "S",                    // Default value is S (success)  <br>for failure F (fail)
-    title: null,                  // Default -> Updates <br>
-    footer: null,                 // Default --> jenkins <br>
-    pretext:  null,               // Default --> jenkins <br>
-    footerIcon: null,             // Default --> 'https://jenkins. <br>io/images/logos/jenkins/256.png'
- <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; message: null, <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; pass: "S",                    // Default value is S (success)for failure F (fail) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; title: null,                  // Default -> Build Successful <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; footer: null,                 // Default --> jenkins <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; pretext:  null,               // Default --> jenkins <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; footer_icon: null,             // Default --> 'https://jenkins.io/images/logos/jenkins/256.png' <br>
      <br>
 // Checkout shared library  <br>
     // Mandatory <br>
-    gitUrl: "https://github.com/Vaibhavraj-nath-chauhan/ <br>sharedLibraryDemo.git",
-    branch: "main",                                        //  <br>Default staging
+    &nbsp;&nbsp;&nbsp;&nbsp; gitUrl: "", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; branch: "", <br>
     // Optional <br>
-    gitToken: "git-hub-new-vaibhavraj05", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; gitToken: "", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; subModule: "false" , <br>
  <br>
 // Secret Shared Library  <br>
     // Mandatory <br>
-    secretToken:"yocharge-secret-manager", <br>
-    secretRegion:"ap-south-1", <br>
-    secretName:"yocharge-client-test-admin", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; secretToken:"", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; secretRegion:"", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; secretName:"", <br>
  <br>
 // Terrafrom Shared Library <br>
     // Mandatory <br>
-    secretToken: "aws-new-cred-1", <br>
-    awsProfile: "share", <br>
-    awsRegion: "us-east-1", <br>
-    workDir: " ", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; secretToken: "", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; awsProfile: "", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;awsRegion: "", <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; workDir: " ", <br>
     // Optional <br>
-    // dockerImage: "dockerImage",             // Default ->  <br>msshahanshah/tools:terrform02
-    action: "init",                           // Actions -> init,  <br>plan, apply, destroy
-    extraParameter: null <br>
+    // dockerImage: "dockerImage",             // Default -> msshahanshah/tools:terrform02 <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; action: "init",                           // Actions -> init, plan, apply, destroy <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; extraParameter: null ,<br>
                          <br>
+// docker images tag       <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; DOCKER_IMAGE_NAME: '' <br>
 ] <br>

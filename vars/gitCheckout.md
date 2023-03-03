@@ -10,6 +10,7 @@
 
 #### Optional field
 3. gitToken  -> Token to access private repo
+4. subModule -> Used to enable sub module feature [true, false]
 
 
 

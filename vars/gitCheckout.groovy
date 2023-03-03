@@ -4,6 +4,7 @@ def call(Map config) {
    def gitUrl = config.gitUrl ?: error("No url passed")            // Git repo url 
    def branch = config.branch ?: error("No branch passed")         // Branch we need to pass
    def gitToken = config.gitToken ?: ""                            // Token to access private repo
+   def subModule = config.subModule ?: false                       // If you want to apply submodule or not 
    
    checkout(
       [$class: 'GitSCM', 
@@ -14,7 +15,15 @@ def call(Map config) {
                url: "${gitUrl}", 
                credentialsId: "${gitToken}"
             ]
-         ]
+         ],
+       doGenerateSubmoduleConfigurations: "${subModule}", 
+        extensions: 
+        [
+           [
+              $class: 'SubmoduleOption', 
+              parentCredentials: true
+           ]
+        ]
       ]
    )
 

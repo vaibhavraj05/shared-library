@@ -12,7 +12,7 @@ def call(Map config) {
   def pretext = config.pretext ?: 'Jenkins'                                          // Pretext
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png' // Logo on footer
 
-  def color= '#00FF00'                                                               // Green for successful build
+  def color= '#006400'                                                               // Green for successful build
   if(pass != 'S'){                                                     
     color= '#FF0000'                                                                 // Red for fail build
     title = "Build Failed"
