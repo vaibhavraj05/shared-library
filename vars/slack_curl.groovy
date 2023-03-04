@@ -27,7 +27,7 @@ def call(Map config) {
                     "color": "${color}",
                     "pretext": "Notification From ${pretext}",
                     "title": "${title}",
-                    "text": "${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nBuild Output: (<${env.BUILD_URL}/console|Open>) \n${message}",
+                    "text": "${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} ${env.BUILD_NUMBER} \nBuild Output: (<${env.BUILD_URL}/console|Open>) \n${message}",
                     "footer": "${footer}",
                     "footer_icon": "${footerIcon}"
                   }
