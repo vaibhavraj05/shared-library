@@ -5,7 +5,7 @@ def call(Map config) {
   def message = config.message ?: ''                                     // Custom message we cant to send          
   def pass = config.pass ?: 'S'                                          // Status of the job [S(success), F(fail)]
   def title = config.title ?: 'Build Successful'                                  // Custom title we want to send
-  def BUILD_NUM = config.BUILD_NUM ?: '${env.BUILD_NUMBER}'
+  def BUILD_NUM = config.BUILD_NUM ?: ${env.BUILD_NUMBER}
   def footer = config.footer ?: 'Jenkins'                                // Custom footer we want to send 
   def pretext = config.pretext ?: 'Jenkins'                              // Custom pretext we want to send 
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png' // Custrom logo on footer
