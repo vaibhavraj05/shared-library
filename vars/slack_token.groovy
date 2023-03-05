@@ -8,6 +8,8 @@ def call(Map config) {
   def message = config.message ?: ''                                                 // Customize message according to needs
   def pass = config.pass ?: 'S'                                                      // Status of the job [S(success),F(Fail)]
   def title = config.title ?: 'Build Successful'                                              // Any specific title to send
+  def build_num = config.BUILD_NUM ?: env.BUILD_NUMBER
+  def job_name = config.job_name ?: env.JOB_NAME
   def footer = config.footer ?: 'Jenkins'                                            // Name on footer
   def pretext = config.pretext ?: 'Jenkins'                                          // Pretext
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png' // Logo on footer
@@ -25,7 +27,7 @@ def call(Map config) {
           color: "${color}",
           pretext: "Notification From ${pretext}",
           title: "${title}",
-          text: "${env.BUILD_TRIGGER_BY} \nJob Name: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n${message}",
+          text: "${env.BUILD_TRIGGER_BY} \nJob Name: ${job_name} \nBuild Number: ${build_num} \n Build Output: (<${env.BUILD_URL}/console|Open>) \n${message}",
           footer: "${footer}",
           footer_icon: "${footerIcon}",
         ]
