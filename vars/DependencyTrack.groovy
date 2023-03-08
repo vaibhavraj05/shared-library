@@ -1,6 +1,6 @@
 def call(){
     sh '''
-    export $package_file=$(find . -name package.json)
+    export package_file=$(find . -name package.json)
    '''
     def packagelocation = config.packloc ?: './'
     def autocreateproject = config.autocreateproject ?: false
