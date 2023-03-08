@@ -1,7 +1,5 @@
 def call(){
-    sh '''
-    export package_file=$(find . -name package.json)
-   '''
+    sh "export package_file=$(find . -name package.json)"
     def packagelocation = config.packloc ?: './'
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
