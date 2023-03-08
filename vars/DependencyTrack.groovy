@@ -1,5 +1,6 @@
 def call(Map config){
-    def package_file=sh(returnStdout: true, script:"find . -name package.json")
+    // def package_file=sh(returnStdout: true, script:"find . -name package.json")
+    def language = config.language ?: error("Please enter the language.")
     def packagelocation = config.packlocation ?: './'
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
@@ -12,12 +13,15 @@ def call(Map config){
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     def nodeversion = config.nodeversion ?: '10.18.1'
     
-    if("${package_file}" != ''){
+    if("${language}" == 'node'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
     }
-    else {
+    else if("${language}" == 'python'){
         sh "docker run --rm -v ${workspace}:/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml"
+    }
+    else if("${language}" == 'angular'){
+        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} /bin/bash -c 'npm install -g @angular/cli && npm --prefix ${packagelocation} install'"
     }
     
     withCredentials([string(credentialsId: "${apikey}", variable: 'API_KEY')]) 
