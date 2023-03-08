@@ -13,8 +13,8 @@ def call(Map config){
     echo "1234"
    
     if("${package_file}" != ''){
-        sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm install'
-        sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src'
+        sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm --prefix ${packagelocation} install'
+        sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src/${packagelocation}'
     }
     else {
         sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml'
