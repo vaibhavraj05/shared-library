@@ -10,10 +10,12 @@ def call(){
     def unstablenewcritical = config.unstablenewcritical ?: '1'
     def unstabletotalcritical = config.unstabletotalcritical ?: '1'
     def unstabletotalhigh = config.unstabletotalhigh ?: '1'
+    echo "1234"
    
 //     if(package_file != ''){
         sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm install'
         sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src'
+    echo "hello"
 //     }
 //     else {
 //         sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml'
