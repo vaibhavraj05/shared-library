@@ -12,6 +12,8 @@ def call(Map config){
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     def nodeversion = config.nodeversion ?: '10.18.1'
+    def unstabletotallow = config.unstabletotallow ?: 1
+    def unstabletotalmedium = config.unstabletotalmedium ?: 1
     
     if("${language}" == 'node'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
@@ -40,7 +42,9 @@ def call(Map config){
         synchronous: true, 
         unstableNewCritical: "${unstablenewcritical}", 
         unstableTotalCritical: "${unstabletotalcritical}", 
-        unstableTotalHigh: "${unstabletotalhigh}"
+        unstableTotalHigh: "${unstabletotalhigh}",
+        unstableTotalLow: "${unstabletotallow}",
+        unstableTotalMedium: "${unstabletotalmedium}"
     } 
     else if(autocreateproject == true){
         def projectname = config.projectname ?: error("Please specify the project name.")
@@ -58,7 +62,9 @@ def call(Map config){
         synchronous: true, 
         unstableNewCritical: "${unstablenewcritical}", 
         unstableTotalCritical: "${unstabletotalcritical}", 
-        unstableTotalHigh: "${unstabletotalhigh}"
+        unstableTotalHigh: "${unstabletotalhigh}",
+        unstableTotalLow: "${unstabletotallow}",
+        unstableTotalMedium: "${unstabletotalmedium}"
     }
     }
     sh "rm -rf ${packagelocation}node_modules"
