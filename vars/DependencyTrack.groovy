@@ -1,5 +1,5 @@
 def call(Map config){
-//     sh '''export package_file=$(find . -name package.json)'''
+    sh '''export package_file=$(find . -name package.json)'''
     def packagelocation = config.packloc ?: './'
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
@@ -12,21 +12,22 @@ def call(Map config){
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     echo "1234"
    
-//     if(package_file != ''){
+    if(package_file != ''){
         sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm install'
         sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src'
-    echo "hello"
-//     }
-//     else {
-//         sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml'
-//     }
-
+    }
+    else {
+        sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml'
+    }
+    
+    withCredentials([string(credentialsId: "${apikey}", variable: 'API_KEY')]) 
+    {
     if(autocreateproject == false){
         def projectid = config.projectid ?: error("Please enter the projectid.")
 
         dependencyTrackPublisher artifact: './bom.xml', 
         autoCreateProjects: "${autocreateproject}",
-        dependencyTrackApiKey: "${apikey}", 
+        dependencyTrackApiKey: API_KEY, 
         dependencyTrackFrontendUrl: "${frontendurl}", 
         dependencyTrackUrl: "${backendurl}", 
         failedTotalCritical: "${failedtotalcritical}", 
@@ -43,17 +44,18 @@ def call(Map config){
 
         dependencyTrackPublisher artifact: './bom.xml', 
         autoCreateProjects: "${autocreateproject}",
-        dependencyTrackApiKey: "${apikey}", 
+        dependencyTrackApiKey: API_KEY, 
         dependencyTrackFrontendUrl: "${frontendurl}", 
         dependencyTrackUrl: "${backendurl}", 
         failedTotalCritical: "${failedtotalcritical}", 
         failedTotalHigh: "${failedtotalhigh}",
         projectName: "${projectname}", 
         projectVersion: "${version}",
-       synchronous: true, 
+        synchronous: true, 
         unstableNewCritical: "${unstablenewcritical}", 
         unstableTotalCritical: "${unstabletotalcritical}", 
         unstableTotalHigh: "${unstabletotalhigh}"
+    }
     }
 
 }
