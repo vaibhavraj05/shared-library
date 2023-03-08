@@ -61,6 +61,6 @@ def call(Map config){
         unstableTotalHigh: "${unstabletotalhigh}"
     }
     }
-
+    sh "rm -rf ${packagelocation}/node_modules"
 }
 
