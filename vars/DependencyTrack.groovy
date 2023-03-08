@@ -11,6 +11,7 @@ def call(Map config){
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     def nodeversion = config.nodeversion ?: '10.18.1'
+    echo "${nodeversion}"
    
     if("${package_file}" != ''){
         sh 'docker run --rm -v $(pwd):/src -w /src node:"${nodeversion}" npm --prefix "${packagelocation}" install'
