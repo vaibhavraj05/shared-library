@@ -12,7 +12,7 @@ def call(Map config){
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     def nodeversion = config.nodeversion ?: '10.18.1'
     echo "${nodeversion}"
-   
+    echo "${package_file}"
     if("${package_file}" != ''){
         def pwd = sh '''echo $(pwd)'''
         echo "${pwd}"
