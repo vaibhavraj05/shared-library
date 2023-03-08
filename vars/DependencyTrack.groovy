@@ -5,11 +5,11 @@ def call(Map config){
     def apikey = config.api_key ?: error("Please enter the api_key")
     def frontendurl = config.frontendurl ?: 'https://dtrack.gkmit.co'
     def backendurl = config.backendurl ?: 'https://dtrackapi.gkmit.co'
-    def failedtotalcritical = config.ftc ?: '100'
-    def failedtotalhigh = config.fth ?: '100'
-    def unstablenewcritical = config.unstablenewcritical ?: '1'
-    def unstabletotalcritical = config.unstabletotalcritical ?: '1'
-    def unstabletotalhigh = config.unstabletotalhigh ?: '1'
+    def failedtotalcritical = config.ftc ?: 100
+    def failedtotalhigh = config.fth ?: 100
+    def unstablenewcritical = config.unstablenewcritical ?: 1
+    def unstabletotalcritical = config.unstabletotalcritical ?: 1
+    def unstabletotalhigh = config.unstabletotalhigh ?: 1
     echo "1234"
    
 //     if(package_file != ''){
