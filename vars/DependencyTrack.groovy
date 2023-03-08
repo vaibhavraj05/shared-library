@@ -3,7 +3,7 @@ def call(Map config){
     def language = config.language ?: error("Please enter the language.")
     def packagelocation = config.packlocation ?: './'
     def autocreateproject = config.autocreateproject ?: false
-    def apikey = config.api_key ?: error("Please enter the api_key")
+    def apikey = config.apikey ?: error("Please enter the api_key")
     def frontendurl = config.frontendurl ?: 'https://dtrack.gkmit.co'
     def backendurl = config.backendurl ?: 'https://dtrackapi.gkmit.co'
     def failedtotalcritical = config.failedtotalcritical ?: 100
