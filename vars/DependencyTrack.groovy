@@ -1,5 +1,5 @@
 def call(Map config){
-    def package_file=sh '''find . -name package.json'''
+    def package_file=sh(returnStdout: true, script:"find . -name package.json")
     def packagelocation = config.packlocation ?: './backend'
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
