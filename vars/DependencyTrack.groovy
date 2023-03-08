@@ -14,7 +14,7 @@ def call(Map config){
     echo "${nodeversion}"
    
     if("${package_file}" != ''){
-        sh 'docker run --rm -v $(pwd):/src -w /src node:"${nodeversion}" npm --prefix "${packagelocation}" install'
+        sh "docker run --rm -v $(pwd):/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
         sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src/"${packagelocation}"'
     }
     else {
