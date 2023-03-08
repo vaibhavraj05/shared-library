@@ -1,6 +1,6 @@
 def call(Map config){
     def package_file=sh '''find . -name package.json'''
-    def packagelocation = config.packloc ?: './'
+    def packagelocation = config.packloc ?: ./
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
     def frontendurl = config.frontendurl ?: 'https://dtrack.gkmit.co'
@@ -10,7 +10,7 @@ def call(Map config){
     def unstablenewcritical = config.unstablenewcritical ?: 1
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
-    def nodeversion = config.nodeversion ?: '10.18.1'
+    def nodeversion = config.nodeversion ?: 10.18.1
     echo "${nodeversion}"
    
     if("${package_file}" != ''){
