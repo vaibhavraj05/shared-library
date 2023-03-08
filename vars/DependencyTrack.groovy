@@ -12,7 +12,7 @@ def call(Map config){
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     echo "1234"
    
-    if(package_file != ''){
+    if("${package_file}" != ''){
         sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm install'
         sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src'
     }
