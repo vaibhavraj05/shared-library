@@ -12,8 +12,8 @@ def call(){
     def unstabletotalhigh = config.unstabletotalhigh ?: '1'
    
 //     if(package_file != ''){
-        sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm --prefix ${packagelocation} install'
-        sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src/${packagelocation}'
+        sh 'docker run --rm -v $(pwd):/src -w /src node:10.18.1 npm install'
+        sh 'docker run --rm -v $(pwd):/src cyclonedx/cyclonedx-node /src'
 //     }
 //     else {
 //         sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml'
