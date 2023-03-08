@@ -25,35 +25,35 @@ def call(Map config){
         def projectid = config.projectid ?: error("Please enter the projectid.")
 
         dependencyTrackPublisher artifact: './bom.xml', 
-        autoCreateProjects: '${autocreateproject}',
-        dependencyTrackApiKey: '${apikey}', 
-        dependencyTrackFrontendUrl: '${frontendurl}', 
-        dependencyTrackUrl: '${backendurl}', 
-        failedTotalCritical: '${failedtotalcritical}', 
-        failedTotalHigh: '${failedtotalhigh}',
-        projectId: '${projectid}',
+        autoCreateProjects: "${autocreateproject}",
+        dependencyTrackApiKey: "${apikey}", 
+        dependencyTrackFrontendUrl: "${frontendurl}", 
+        dependencyTrackUrl: "${backendurl}", 
+        failedTotalCritical: "${failedtotalcritical}", 
+        failedTotalHigh: "${failedtotalhigh}",
+        projectId: "${projectid}",
         synchronous: true, 
-        unstableNewCritical: '${unstablenewcritical}', 
-        unstableTotalCritical: '${unstabletotalcritical}', 
-        unstableTotalHigh: '${unstabletotalhigh}'
+        unstableNewCritical: "${unstablenewcritical}", 
+        unstableTotalCritical: "${unstabletotalcritical}", 
+        unstableTotalHigh: "${unstabletotalhigh}"
     } 
     else if(autocreateproject == true){
         def projectname = config.projectname ?: error("Please specify the project name.")
         def version = config.version ?: '01'
 
         dependencyTrackPublisher artifact: './bom.xml', 
-        autoCreateProjects: '${autocreateproject}',
-        dependencyTrackApiKey: '${apikey}', 
-        dependencyTrackFrontendUrl: '${frontendurl}', 
-        dependencyTrackUrl: '${backendurl}', 
-        failedTotalCritical: '${failedtotalcritical}', 
-        failedTotalHigh: '${failedtotalhigh}',
-        projectName: '${projectname}', 
-        projectVersion: '${version}',
-        synchronous: true, 
-        unstableNewCritical: '${unstablenewcritical}', 
-        unstableTotalCritical: '${unstabletotalcritical}', 
-        unstableTotalHigh: '${unstabletotalhigh}'
+        autoCreateProjects: "${autocreateproject}",
+        dependencyTrackApiKey: "${apikey}", 
+        dependencyTrackFrontendUrl: "${frontendurl}", 
+        dependencyTrackUrl: "${backendurl}", 
+        failedTotalCritical: "${failedtotalcritical}", 
+        failedTotalHigh: "${failedtotalhigh}",
+        projectName: "${projectname}", 
+        projectVersion: "${version}",
+       synchronous: true, 
+        unstableNewCritical: "${unstablenewcritical}", 
+        unstableTotalCritical: "${unstabletotalcritical}", 
+        unstableTotalHigh: "${unstabletotalhigh}"
     }
 
 }
