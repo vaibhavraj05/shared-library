@@ -1,6 +1,6 @@
 def call(Map config){
     def package_file=sh(returnStdout: true, script:"find . -name package.json")
-    def packagelocation = config.packlocation ?: './backend'
+    def packagelocation = config.packlocation ?: './'
     def autocreateproject = config.autocreateproject ?: false
     def apikey = config.api_key ?: error("Please enter the api_key")
     def frontendurl = config.frontendurl ?: 'https://dtrack.gkmit.co'
@@ -11,14 +11,13 @@ def call(Map config){
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
     def nodeversion = config.nodeversion ?: '10.18.1'
-    echo "${nodeversion}"
-    echo "${package_file}"
+    
     if("${package_file}" != ''){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
     }
     else {
-        sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i "${packagelocation}"/requirements.txt --format xml -o bom.xml'
+        sh "docker run --rm -v ${workspace}:/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml"
     }
     
     withCredentials([string(credentialsId: "${apikey}", variable: 'API_KEY')]) 
