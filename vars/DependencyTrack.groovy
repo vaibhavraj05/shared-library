@@ -18,7 +18,7 @@ def call(Map config){
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
     }
     else if("${language}" == 'python'){
-        sh "docker run --rm -v ${workspace}:/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}/requirements.txt --format xml -o bom.xml"
+        sh "docker run --rm -v ${workspace}:/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}requirements.txt --format xml -o bom.xml"
     }
     else if("${language}" == 'angular'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} /bin/bash -c 'npm install -g @angular/cli && npm --prefix ${packagelocation} install'"
@@ -61,6 +61,6 @@ def call(Map config){
         unstableTotalHigh: "${unstabletotalhigh}"
     }
     }
-    sh "rm -rf ${packagelocation}/node_modules"
+    sh "rm -rf ${packagelocation}node_modules"
 }
 
