@@ -1,4 +1,4 @@
-def call(){
+def call(Map config){
 //     sh '''export package_file=$(find . -name package.json)'''
     def packagelocation = config.packloc ?: './'
     def autocreateproject = config.autocreateproject ?: false
