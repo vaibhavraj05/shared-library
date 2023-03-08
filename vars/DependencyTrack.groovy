@@ -14,11 +14,8 @@ def call(Map config){
     echo "${nodeversion}"
     echo "${package_file}"
     if("${package_file}" != ''){
-         def pwd = sh(returnStdout: true, script:"pwd")
-        echo "${pwd}"
-        def docker_run = "docker run --rm -v ${pwd}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
-        sh(script:"${docker_run}")
-        sh(script:"docker run --rm -v ${pwd}:/src cyclonedx/cyclonedx-node /src/${packagelocation}")
+        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
+        sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
     }
     else {
         sh 'docker run --rm -v $(pwd):/src -w /src cyclonedx/cyclonedx-python -r -i "${packagelocation}"/requirements.txt --format xml -o bom.xml'
