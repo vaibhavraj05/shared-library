@@ -27,7 +27,7 @@ def call(Map config){
 
         dependencyTrackPublisher artifact: './bom.xml', 
         autoCreateProjects: "${autocreateproject}",
-        dependencyTrackApiKey: API_KEY, 
+            dependencyTrackApiKey: "${API_KEY}", 
         dependencyTrackFrontendUrl: "${frontendurl}", 
         dependencyTrackUrl: "${backendurl}", 
         failedTotalCritical: "${failedtotalcritical}", 
@@ -44,7 +44,7 @@ def call(Map config){
 
         dependencyTrackPublisher artifact: './bom.xml', 
         autoCreateProjects: "${autocreateproject}",
-        dependencyTrackApiKey: API_KEY, 
+        dependencyTrackApiKey: "${API_KEY}", 
         dependencyTrackFrontendUrl: "${frontendurl}", 
         dependencyTrackUrl: "${backendurl}", 
         failedTotalCritical: "${failedtotalcritical}", 
