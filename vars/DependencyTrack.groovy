@@ -10,7 +10,7 @@ def call(Map config){
     def unstablenewcritical = config.unstablenewcritical ?: 1
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
-    def nodeversion = config.nodeversion ?: 10.18.1
+    def nodeversion = config.nodeversion ?: '10.18.1'
     echo "${nodeversion}"
    
     if("${package_file}" != ''){
