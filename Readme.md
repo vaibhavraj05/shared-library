@@ -81,7 +81,7 @@
     5. Git Checkout
         def info = gitCheckout(config)
 
-### Function who returning some values
+### Function are who returning some values
     1. gitCheckout.groovy
     
    
