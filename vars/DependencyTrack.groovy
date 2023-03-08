@@ -16,7 +16,8 @@ def call(Map config){
     if("${package_file}" != ''){
          def pwd = sh(returnStdout: true, script:"pwd")
         echo "${pwd}"
-        sh(script:"docker run --rm -v ${pwd}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install")
+        def docker_run = "docker run --rm -v ${pwd}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
+        sh(script:"${docker_run}")
         sh(script:"docker run --rm -v ${pwd}:/src cyclonedx/cyclonedx-node /src/${packagelocation}")
     }
     else {
