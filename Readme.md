@@ -83,6 +83,11 @@
 
 ### Function are who returning some values
     1. gitCheckout.groovy
+
+
+### Note
+    Any change in shared library can trigger the pipeline in which we implemented the shared library so to stop auto trigger we need to turn off the auto trigger checkbox in manage Jenkins tab 
+<img src = "image/image.png"/>
     
    
 
