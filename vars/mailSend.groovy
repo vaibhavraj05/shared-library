@@ -8,7 +8,7 @@ def call(Map config){
     def subject = config.subject ?: "Project Detatils"
     withCredentials([string(credentialsId: 'test-email-temp', variable: 'gmailTemplate')]) {
     echo "I am here"
-    sh "set -x;curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd --mail-from ${mailFrom} --mail-rcpt ${groupMail} -F text=${message} --user ${gmailTemplate} --header Subject: ${subject}"
+    sh "set -x;curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd --mail-from ${mailFrom} --mail-rcpt ${groupMail} -F text=\"${message}\" --user ${gmailTemplate} --header Subject: \"${subject}\""
     }
 
 
