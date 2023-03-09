@@ -6,13 +6,10 @@ def call(Map config){
     def mailFrom = config.mailFrom ?: "vaibhavraj@gkmit.co"
     def message =  config.message ?: " "
     def subject = config.subject ?: "Project Detatils"
-    echo "I am here"
     withCredentials([string(credentialsId: "${gmailCred}", variable: 'gmailTemplate')]) {
-    sh"""
-        curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd --mail-from "${mailFrom}" --mail-rcpt "${groupMail}" -F text="${message}" --user "${gmailTemplate}" --header "Subject: ${subject}"
-    """
-    
-        }
+    echo "I am here"
+    sh "set -x;curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd --mail-from ${mailFrom} --mail-rcpt ${groupMail} -F text=${message} --user ${gmailTemplate} --header Subject: ${subject}"
+    }
 
 
 }
