@@ -8,12 +8,12 @@ def call(Map config){
     def backendurl = config.backendurl ?: 'https://dtrackapi.gkmit.co'
     def failedtotalcritical = config.failedtotalcritical ?: 100
     def failedtotalhigh = config.failedtotalhigh ?: 100
-    def unstablenewcritical = config.unstablenewcritical ?: 1
-    def unstabletotalcritical = config.unstabletotalcritical ?: 1
-    def unstabletotalhigh = config.unstabletotalhigh ?: 1
+    def unstablenewcritical = config.unstablenewcritical ?: 100
+    def unstabletotalcritical = config.unstabletotalcritical ?: 100
+    def unstabletotalhigh = config.unstabletotalhigh ?: 100
     def nodeversion = config.nodeversion ?: '10.18.1'
-    def unstabletotallow = config.unstabletotallow ?: 1
-    def unstabletotalmedium = config.unstabletotalmedium ?: 1
+    def unstabletotallow = config.unstabletotallow ?: 100
+    def unstabletotalmedium = config.unstabletotalmedium ?: 100
     
     if("${language}" == 'node'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
