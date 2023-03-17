@@ -18,12 +18,15 @@ def call(Map config){
     if("${language}" == 'node'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
+        sh "rm -rf ${packagelocation}node_modules"
     }
     else if("${language}" == 'python'){
         sh "docker run --rm -v ${workspace}:/src -w /src cyclonedx/cyclonedx-python -r -i ${packagelocation}requirements.txt --format xml -o bom.xml"
     }
     else if("${language}" == 'angular'){
         sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} /bin/bash -c 'npm install -g @angular/cli && npm --prefix ${packagelocation} install'"
+        sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
+        sh "rm -rf ${packagelocation}node_modules"
     }
     
     withCredentials([string(credentialsId: "${apikey}", variable: 'API_KEY')]) 
@@ -67,6 +70,6 @@ def call(Map config){
         unstableTotalMedium: "${unstabletotalmedium}"
     }
     }
-    sh "rm -rf ${packagelocation}node_modules"
+    
 }
 
