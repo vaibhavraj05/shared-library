@@ -11,7 +11,7 @@ def call(Map config){
     def unstablenewcritical = config.unstablenewcritical ?: 100
     def unstabletotalcritical = config.unstabletotalcritical ?: 100
     def unstabletotalhigh = config.unstabletotalhigh ?: 100
-    def nodeversion = config.nodeversion ?: '10.18.1'
+    def nodeversion = config.nodeversion ?: '14'
     def unstabletotallow = config.unstabletotallow ?: 100
     def unstabletotalmedium = config.unstabletotalmedium ?: 100
     
