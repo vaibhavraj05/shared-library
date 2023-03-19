@@ -6,6 +6,9 @@ def call(Map config) {
    def gitToken = config.gitToken ?: ""                            // Token to access private repo
    def subModule = config.subModule ?: false                       // If you want to apply submodule or not 
    
+   
+   cleanWs()
+   
    checkout(
       [$class: 'GitSCM', 
       branches: [[name: "*/${branch}"]], 
