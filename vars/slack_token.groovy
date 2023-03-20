@@ -15,9 +15,12 @@ def call(Map config) {
   def footerIcon = config.footer_icon ?: 'https://jenkins.io/images/logos/jenkins/256.png' // Logo on footer
 
   def color= '#006400'                                                               // Green for successful build
-  if(pass != 'S'){                                                     
+  if(pass == 'F'){                                                     
     color= '#FF0000'                                                                 // Red for fail build
     title = "Build Failed"
+  }else if(pass == 'U'){
+    color = '#FFFF00'
+    title = "Build Successful with Instability"
   }
 
   env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription}" //Fetching the build trigger
