@@ -18,6 +18,9 @@ def call(Map config) {
   if(pass != 'S'){                                               
     color= '#FF0000'                                                      // Red for fail build
     title = "Build Failed"                                               // Status fo the build
+  }else if(pass == 'U'){
+    color = '#b0af3e'
+    title = "Build Successfull (UNSTABLE)"
   }
   
   withCredentials([string(credentialsId: "${webhook}", variable: 'webhook_url')]) {
