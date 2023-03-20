@@ -26,7 +26,6 @@ def call(Map config) {
   withCredentials([string(credentialsId: "${webhook}", variable: 'webhook_url')]) {
     env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription}" //Fetching the build trigger
     def objects = """'{
-       "username": "vaibhavraj",
         "attachments":[
                   {
                     "color": "${color}",
