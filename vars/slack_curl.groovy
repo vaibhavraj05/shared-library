@@ -15,7 +15,7 @@ def call(Map config) {
   
   def color= '#006400'                                                    // Green for successful build
   
-  if(pass != 'S'){                                               
+  if(pass == 'F'){                                               
     color= '#FF0000'                                                      // Red for fail build
     title = "Build Failed"                                               // Status fo the build
   }else if(pass == 'U'){
