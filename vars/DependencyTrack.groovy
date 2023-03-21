@@ -70,6 +70,11 @@ def call(Map config){
         unstableTotalMedium: "${unstabletotalmedium}"
     }
     }
+    if(currentBuild.result == 'UNSTABLE')
+    {
+        return "U"
+    }
+    return "S"
     
 }
 

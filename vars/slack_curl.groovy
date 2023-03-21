@@ -15,15 +15,17 @@ def call(Map config) {
   
   def color= '#006400'                                                    // Green for successful build
   
-  if(pass != 'S'){                                               
+  if(pass == 'F'){                                               
     color= '#FF0000'                                                      // Red for fail build
     title = "Build Failed"                                               // Status fo the build
+  }else if(pass == 'U'){
+    color = '#b0af3e'
+    title = "Build Successfull (UNSTABLE)"
   }
   
   withCredentials([string(credentialsId: "${webhook}", variable: 'webhook_url')]) {
     env.BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription}" //Fetching the build trigger
     def objects = """'{
-       "username": "vaibhavraj",
         "attachments":[
                   {
                     "color": "${color}",

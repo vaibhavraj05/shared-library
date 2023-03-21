@@ -1,0 +1,52 @@
+name: 'Terraform'
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'terraform-test-run'
+        default: 'World'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: configure aws profile
+      uses: Fooji/create-aws-profile-action@v1
+      with:
+        profile: n2xpress
+        region: us-east-1
+        key: ${{ secrets.aws_n2_access_key }}
+        secret: ${{ secrets.aws_n2_secret_key }}
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      #with:
+      #  cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    - run: pwd && ls
+    - name: Terraform Init
+      run: cd demo-tf-vpc && terraform init
+
+    - name: Terraform Format
+      run: cd demo-tf-vpc && terraform fmt -check
+
+    - name: Terraform Plan
+      run: cd demo-tf-vpc && terraform plan 
+
+#    - name: Terraform Apply
+ #     if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+ #     run: terraform apply -auto-approve -input=false
