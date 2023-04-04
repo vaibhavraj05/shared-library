@@ -14,10 +14,10 @@ def call(Map config){
     def nodeversion = config.nodeversion ?: 14 //sh (returnStdout: true, script: '''cat Dockerfile | grep FROM | head -n 1 | cut -d ":" -f 2| cut -d " " -f 1''').trim()
     def unstabletotallow = config.unstabletotallow ?: 1
     def unstabletotalmedium = config.unstabletotalmedium ?: 1
-    def extra_command = config.extraCommand ?: 'echo'
+    def extraCommand = config.extraCommand ?: 'echo'
     
     if("${language}" == 'node'){
-        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} ${extra_command} && npm --prefix ${packagelocation} install"
+        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} ${extraCommand} && npm --prefix ${packagelocation} install"
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
         sh "rm -rf ${packagelocation}node_modules"
     }
