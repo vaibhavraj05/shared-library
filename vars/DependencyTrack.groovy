@@ -16,7 +16,7 @@ def call(Map config){
     def unstabletotalmedium = config.unstabletotalmedium ?: 1
     
     if("${language}" == 'node'){
-        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install"
+        sh "docker run --rm -v ${workspace}:/src -w /src node:${nodeversion} npm --prefix ${packagelocation} install --force"
         sh "docker run --rm -v ${workspace}:/src cyclonedx/cyclonedx-node /src/${packagelocation}"
         sh "rm -rf ${packagelocation}node_modules"
     }
