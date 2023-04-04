@@ -11,7 +11,7 @@ def call(Map config){
     def unstablenewcritical = config.unstablenewcritical ?: 1
     def unstabletotalcritical = config.unstabletotalcritical ?: 1
     def unstabletotalhigh = config.unstabletotalhigh ?: 1
-    def nodeversion = config.nodeversion ?: sh (returnStdout: true, script: '''cat Dockerfile | grep FROM | head -n 1 | cut -d ":" -f 2| cut -d " " -f 1''').trim()
+    def nodeversion = config.nodeversion ?: 14 //sh (returnStdout: true, script: '''cat Dockerfile | grep FROM | head -n 1 | cut -d ":" -f 2| cut -d " " -f 1''').trim()
     def unstabletotallow = config.unstabletotallow ?: 1
     def unstabletotalmedium = config.unstabletotalmedium ?: 1
     
